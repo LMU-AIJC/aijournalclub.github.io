@@ -169,29 +169,31 @@
   </div>
   <script src="schedule.js"></script>
   <script>
-      'use strict'
       const app = new Vue({
         el: '#app',
         data: {
           schedule: schedule
         },
+        created: function () {
+          console.log('created', this);
+        },
         methods: {
-          compare: (m1, m2) => {
+          compare: function (m1, m2) {
             let date1 = m1.date.split('.')
-            date1 = new Date(parseInt(date1[2]), parseInt(date1[1])-1, parseInt(date1[0]))
+            date1 = new Date(parseInt(date1[2]), parseInt(date1[1]), parseInt(date1[0]))
             let date2 = m2.date.split('.')
-            date2 = new Date(parseInt(date2[2]), parseInt(date2[1])-1, parseInt(date2[0]))
-            return date1 < date2 ? 1 : -1
+            date2 = new Date(parseInt(date2[2]), parseInt(date2[1]), parseInt(date2[0]))
+            return date1 > date2 ? -1 : date1 < date2 ? 1 : 0;
           },
-          haslink: (meeting) => {
+          haslink: function (meeting) {
             return meeting.link === null ? false : true
           },
-          hasmaterial: (material) => {
+          hasmaterial: function (material) {
             return material === null ? false : true
           }
         },
         computed: {
-          upcomming: () => {
+          upcomming: function () {
             return schedule.filter((meeting) => {
               let date = meeting.date.split('.')
               date = new Date(parseInt(date[2]), parseInt(date[1])-1, parseInt(date[0]))
@@ -199,7 +201,7 @@
               return date > today ? true : false
             }).sort(this.compare)
           },
-          finished: () => {
+          finished: function () {
             return schedule.filter((meeting) => {
               let date = meeting.date.split('.')
               date = new Date(parseInt(date[2]), parseInt(date[1])-1, parseInt(date[0]))
