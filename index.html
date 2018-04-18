@@ -1,94 +1,215 @@
-<h1>LMU AI Journal Club</h1>
-<p>
-A paper reading group for students of Ludwig Maximilians University of Munich that are interested in AI.
-</p>
-<p>
-Organizers: Georgia Olympia Brikis, Sebastian Wagner </p>
-<p>
-<p>
-Mondays 9am, L U117 (Data Science Lab), Oettingenstrasse 67, Munich, Germany </p>
-<p>
-<p>Topics: Machine Learning, Deep Learning, Computer Vision, Natural Language Processing</p>
-<p>
-These are the papers we are reading this term:
-</p>
-<p>
-<table>
-  <tr>
-    <th>Discussion leader</th>
-    <th>Paper</th>
-    <th>Date</th>
-  </tr>
-  <tr>
-    <td>Azada Rustamova</td>
-    <td>Position-aware Attention and Supervised Data Improve Slot Filling</td>
-    <td>23.04.2018</td>
-  </tr>
-  <tr>
-    <td>Zhenyu Chen</td>
-    <td>A Review on Deep Learning Techniques Applied to Semantic Segmentation</td>
-    <td>16.04.2018</td>
-  </tr>
-  <tr>
-    <td>Changkun Ou</td>
-    <td>Generalization in Machine Learning via Analytical Learning Theory</td>
-    <td>09.04.2018</td>
-  </tr>
-  <tr>
-    <td>Georgia Olympia Brikis  </td>
-    <td>Model-Agnostic Meta-Learning for Fast Adaption of Deep Networks</td>
-    <td>19.03.2018</td>
-  </tr>
-  <tr>
-    <td>Changkun Ou</td>
-    <td>Matrix capsules with EM routing</td>
-    <td>12.03.2018</td>
-  </tr>
-  <tr>
-    <td>Azada Rustamova</td>
-    <td>A causal framework for explaining the predictions of black-box sequence-to-sequence models   </td>
-    <td>05.03.2018</td>
-  </tr>
-  <tr>
-    <td>Sebastian Wagner</td>
-    <td>A Deep Reinforced Model for Abstractive Summarization</td>
-    <td>26.02.2018</td>
-  </tr>
-  <tr>
-    <td>Georgia Olympia Brikis  </td>
-    <td>One Model To Learn Them All</td>
-    <td>19.02.2018</td>
-  </tr>
-  <tr>
-    <td>Sebastian Wagner</td>
-    <td><b>Special issue</b> Workshop on Reinforcement Learning</td>
-    <td>05.02.2018</td>
-  </tr>
-  <tr>
-    <td>Changkun Ou</td>
-    <td>Generalization in Deep Learning</td>
-    <td>29.01.2018</td>
-  </tr>
-  <tr>
-    <td>Azada Rustimova</td>
-    <td>Unsupervised Domain Adaption</td>
-    <td>22.01.2018</td>
-  </tr>
-  <tr>
-    <td>Changkun Ou</td>
-    <td>Understanding Deep Learning Requires Rethinking Generalization</td>
-    <td>15.01.2018</td>
-  </tr>
-  <tr>
-    <td>Sebastian Wagner</td>
-    <td>Learning Transferable Architectures for Scalable Image Recognition</td>
-    <td>08.01.2018</td>
-  </tr>
-  <tr>
-    <td>Georgia Olympia Brikis  </td>
-    <td>Dynamic Routing Between Capsules</td>
-    <td>18.12.2017</td>
-  </tr>
-</table>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>LMU AI Journal Club</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    #header {
+      user-select: none;
+      background-color: #008938;
+      color: white;
+      font-size: 1.5em;
+      margin: 0;
+      height: 40px;
+      padding: 10px 60px;
+      line-height: 40px;
+    }
+    #body {
+      margin: 0 auto;
+      width: 80%;
+    }
+    #footer {
+      min-height: 200px;
+      padding: 20px 80px;
+      margin-top: 50px;
+      font-size: 15px;
+      background-color: #ddd;
+      color: #768193;
+    }
+    #footer .list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    #footer .item {
+      display: inline;
+      float: left;
+      width: 30%;
+      margin-top: 30px;
+      padding: 10px 20px;
+    }
+
+    #footer .title {
+      font-size: 18px;
+      margin: 0 auto 8px;
+      font-weight: 500;
+      position: relative;
+      color: #aaa;
+    }
+
+    #footer .body {
+      margin: 0 0 5px;
+    }
+    #footer .body a {
+      color: #eee;
+    }
+    .info {
+      background-color: #ffffff;
+      color: rgba(0, 0, 0, 0.75);
+      padding: 30px 40px 10px 40px;
+    }
+    .schedule {
+      background-color: #ffffff;
+      padding: 10px 40px;
+    }
+    .date {
+      display: inline-block;
+      margin: 7px;
+      user-select: none;
+    }
+    .material {
+      display: inline-block;
+      margin: 7px;
+      user-select: none;
+    }
+    .material a {
+      margin-left: 7px;
+      text-decoration: underline;
+      color: #006633;
+    }
+    .person {
+      display: inline-block;
+      margin: 5px 0px 10px;
+    }
+    .paper {
+      font-size: 1.2em;
+      background-color: #f0eeeb;
+      color: #006633;;
+      padding: 10px 20px;
+      border-radius: 7px;
+      margin-bottom: 20px
+    }
+    .paper a {
+      margin-left: 7px;
+      text-decoration: underline;
+      color: #006633;
+    }
+    .paper:hover {
+      background-color: #008938;
+      color: white;
+    }
+    .label {
+      padding: 4px 8px;
+      border: 1px solid #ccc!important;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="header">
+      LMU AI Journal Club
+    </div>
+    <div id="body">
+        <div class="info">
+            <h3>A paper reading group for students of Ludwig Maximilians University of Munich that are interested in AI.</h3>
+            
+            <h4>Location: Mondays 9am, L U117 (Data Science Lab), Oettingenstrasse 67, Munich, Germany</h4>
+            <h4>Topics: Machine Learning, Deep Learning, Computer Vision, Natural Language Processing</h4>
+        </div>
+        <div class="schedule">
+            <h2 v-if="upcomming.length !== 0">Upcoming</h2>
+            <div class="meeting" v-for="item in upcomming">
+              <div class="person label"><i class="fas fa-user-circle"></i> {{ item.person }}</div>
+              <div class="date label"><i class="far fa-calendar-alt"></i> {{ item.date }} </div>
+              <div class="paper">
+                {{ item.paper }} 
+                <a href="{{ item.link }}" target="_blank" v-if="haslink(item)"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+        </div>
+        <div class="schedule">
+            <h2>Finished</h2>
+            <div class="meeting" v-for="item in finished">
+                <div class="person label"><i class="fas fa-user-circle"></i> {{ item.person }}</div>
+                <div class="date label"><i class="far fa-calendar-alt"></i> {{ item.date }}</div>
+              <div class="paper">
+                {{ item.paper }}
+                <a :href="item.link" target="_blank" v-if="haslink(item)"><i class="fas fa-external-link-alt"></i></a>
+                <div class="material" v-for="material in item.materials">
+                    <a :href="material"><i class="fas fa-paperclip"></i></a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <ul class="list">
+          <li class="item">
+            <h2 class="title">Copyright © 2018 LMU-AIJC</h2>
+            <div class="body">Georgia Olympia Brikis</div>
+            <div class="body">Sebastian Wagner</div>
+          </li>
+          <li class="item">
+            <h2 class="title">Organizers</h2>
+            <div class="body">Georgia Olympia Brikis</div>
+            <div class="body">Sebastian Wagner</div>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <script src="schedule.js"></script>
+  <script>
+      'use strict'
+      const app = new Vue({
+        el: '#app',
+        data: {
+          schedule: schedule
+        },
+        methods: {
+          compare: (m1, m2) => {
+            let date1 = m1.date.split('.')
+            date1 = new Date(parseInt(date1[2]), parseInt(date1[1])-1, parseInt(date1[0]))
+            let date2 = m2.date.split('.')
+            date2 = new Date(parseInt(date2[2]), parseInt(date2[1])-1, parseInt(date2[0]))
+            return date1 < date2 ? 1 : -1
+          },
+          haslink: (meeting) => {
+            return meeting.link === null ? false : true
+          },
+          hasmaterial: (material) => {
+            return material === null ? false : true
+          }
+        },
+        computed: {
+          upcomming: () => {
+            return schedule.filter((meeting) => {
+              let date = meeting.date.split('.')
+              date = new Date(parseInt(date[2]), parseInt(date[1])-1, parseInt(date[0]))
+              const today = new Date()
+              return date > today ? true : false
+            }).sort(this.compare)
+          },
+          finished: () => {
+            return schedule.filter((meeting) => {
+              let date = meeting.date.split('.')
+              date = new Date(parseInt(date[2]), parseInt(date[1])-1, parseInt(date[0]))
+              const today = new Date()
+              return date > today ? false : true
+            }).sort(this.compare)
+          }
+        }
+      })
+  </script>
+</body>
+</html>
 
