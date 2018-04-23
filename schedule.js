@@ -130,5 +130,14 @@ const schedule = [
     "date": "23.04.2018",
     "materials": [],
     "tags": []
+  },
+  {
+    "person": "Georgia Olympia Brikis",
+    "email": null,
+    "paper": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network",
+    "link": "https://arxiv.org/abs/1609.04802",
+    "date": "30.04.2018",
+    "materials": [],
+    "tags": []
   }
 ]
