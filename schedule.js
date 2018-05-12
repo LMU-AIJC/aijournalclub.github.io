@@ -139,5 +139,14 @@ const schedule = [
     "date": "30.04.2018",
     "materials": [],
     "tags": []
+  },
+  {
+    "person": "Sebastian Wagner",
+    "email": null,
+    "paper": "Fine-tuned Language Models for Text Classification",
+    "link": "https://arxiv.org/abs/1801.06146",
+    "date": "14.05.2018",
+    "materials": [],
+    "tags": []
   }
 ]
