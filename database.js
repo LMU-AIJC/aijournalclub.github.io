@@ -1,4 +1,15 @@
-const schedule = [
+const messages = [
+  {
+    "info": "Announcement: No reading group on 21.05.2018",
+    "termination": "21.05.2018",
+  },
+  {
+    "info": "This is an outdated message on 1.05.2018",
+    "termination": "1.05.2018",
+  },
+]
+
+const schedules = [
   {
     "person": "Georgia Olympia Brikis",
     "email": null,
