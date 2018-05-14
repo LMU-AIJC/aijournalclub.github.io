@@ -1,6 +1,6 @@
 const messages = [
   {
-    "info": "Announcement: No reading group on 21.05.2018",
+    "info": "No reading group on 21.05.2018",
     "termination": "21.05.2018",
   },
   {

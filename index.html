@@ -8,135 +8,31 @@
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      user-select: none;
-    }
-    #header {
-      background-color: #008938;
-      color: white;
-      font-size: 1.5em;
-      margin: 0;
-      height: 40px;
-      padding: 10px 60px;
-      line-height: 40px;
-    }
-    #body {
-      margin: 0 auto;
-      width: 80%;
-    }
-    #footer {
-      min-height: 200px;
-      padding: 20px 80px;
-      margin-top: 50px;
-      font-size: 15px;
-      background-color: #ddd;
-      color: #768193;
-    }
-    #footer .list {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    #footer .item {
-      display: inline;
-      float: left;
-      width: 30%;
-      margin-top: 30px;
-      padding: 10px 20px;
-    }
-
-    #footer .title {
-      font-size: 18px;
-      margin: 0 auto 8px;
-      font-weight: 500;
-      position: relative;
-      color: #777;
-    }
-
-    #footer .body {
-      margin: 0 0 5px;
-    }
-    #footer .body a {
-      color: #eee;
-    }
-    .info {
-      background-color: #ffffff;
-      color: rgba(0, 0, 0, 0.75);
-      padding: 30px 40px 10px 40px;
-    }
-    .schedule {
-      background-color: #ffffff;
-      padding: 10px 40px;
-    }
-    .date {
-      display: inline-block;
-      margin: 7px;
-    }
-    .material {
-      display: inline-block;
-      margin: 7px;
-    }
-    .material a {
-      margin-left: 7px;
-      text-decoration: underline;
-      color: #006633;
-    }
-    .person {
-      display: inline-block;
-      margin: 5px 0px 10px;
-    }
-    .paper {
-      font-size: 1.2em;
-      background-color: #f0eeeb;
-      color: #006633;;
-      padding: 10px 20px;
-      border-radius: 7px;
-      margin-bottom: 20px
-    }
-    .paper a {
-      margin-left: 7px;
-      text-decoration: underline;
-      color: #006633;
-    }
-    .paper:hover {
-      background-color: #008938;
-      color: white;
-    }
-    .label {
-      padding: 4px 8px;
-      border: 1px solid #ccc!important;
-      border-radius: 5px;
-    }
-    .announcement {
-      padding-top: 40px;
-      color: red;
-      font-weight: bold;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="app">
     <div id="header">
-      LMU AI Journal Club
+      <div class="left">
+        <a href="https://lmu-aijc.github.io/">LMU AI Journal Club</a>
+      </div>
+      <div class="right">
+          <a href="https://github.com/LMU-AIJC/lmu-aijc.github.io">GitHub</a>
+      </div>
     </div>
-    <div id="body">
+    <div id="body" v-cloak>
         <div class="info">
             <h3>A paper reading group for students of Ludwig Maximilians University of Munich that are interested in AI.</h3>
             
             <h4>Location: Mondays 9am, L U117 (Data Science Lab), Oettingenstrasse 67, Munich, Germany</h4>
             <h4>Topics: Machine Learning, Deep Learning, Computer Vision, Natural Language Processing</h4>
 
-            <ul class="announcement">
-              <li v-for="message in messages" 
-                  v-if="!isAnnouncementOutDated(message)">
-                  <h4>
-                    {{ message.info }}
-                  </h4>
-              </li>
-            </ul>
+            <div class="announcement" v-if="validMessages.length > 0">
+              Announcement:
+              <ul><li v-for="message in validMessages">
+                {{ message.info }}
+              </li></ul>
+            </div>
             
         </div>
         <div class="schedule" v-for="event in events" v-if="event.schedules.length > 0">
@@ -154,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div id="footer">
+    <div id="footer" v-cloak>
         <ul class="list">
           <li class="item">
             <h2 class="title">Copyright &copy; 2018 LMU-AIJC</h2>
@@ -169,55 +65,7 @@
     </div>
   </div>
   <script src="database.js"></script>
-  <script>
-      const date_parser = (d) => {
-        let date = d.split('.')
-        return new Date(parseInt(date[2]), parseInt(date[1])-1, parseInt(date[0]))
-      }
-      const app = new Vue({
-        el: '#app',
-        data: {
-          schedules: schedules,
-          messages: messages
-        },
-        methods: {
-          haslink: (meeting) => {
-            return meeting.link === null ? false : true
-          },
-          isAnnouncementOutDated: (announcement) => {
-            const today = new Date()
-            return date_parser(announcement.termination) <= today ? true : false
-          }
-        },
-        computed: {
-          events: () => {
-            const f = (rule) => {
-              return (meeting) => {
-                date = date_parser(meeting.date)
-                const today = new Date()
-                today.setHours(0, 0, 0, 0) // only compare date
-                return rule(date, today)
-              }
-            }
-            const compare = (m1, m2) => {
-              let date1 = date_parser(m1.date)
-              let date2 = date_parser(m2.date)
-              return (date1 > date2) ? -1 : (date1 < date2 ? 1 : 0)
-            }
-            return [
-              {
-                header: 'Upcoming',
-                schedules: schedules.filter(f((a, b) => a >= b ? true : false)).sort(compare)
-              },
-              {
-                header: 'Finished',
-                schedules: schedules.filter(f((a, b) => a < b ? true : false)).sort(compare)
-              }
-            ]
-          }
-        }
-      })
-  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>
 
