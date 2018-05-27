@@ -1,5 +1,9 @@
 const messages = [
   {
+    "info": "No reading group on 28.05.2018",
+    "termination": "28.05.2018",
+  },
+  {
     "info": "No reading group on 21.05.2018",
     "termination": "21.05.2018",
   },
@@ -40,8 +44,8 @@ const schedules = [
   {
     "person": "Azada Rustimova",
     "email": null,
-    "paper": "Unsupervised Domain Adaptation with Similarity Learning",
-    "link": "https://arxiv.org/pdf/1711.08995.pdf",
+    "paper": "Unsupervised Domain Adaptation by Backpropagation",
+    "link": "http://proceedings.mlr.press/v37/ganin15.pdf",
     "date": "22.01.2018",
     "materials": [],
     "tags": []
@@ -152,11 +156,29 @@ const schedules = [
     "tags": []
   },
   {
+    "person": "Zhenyu Chen",
+    "email": null,
+    "paper": "ChatPainter: Improving Text to Image Generation using Dialogue",
+    "link": "https://arxiv.org/abs/1802.08216",
+    "date": "07.05.2018",
+    "materials": [],
+    "tags": []
+  },
+  {
     "person": "Sebastian Wagner",
     "email": null,
     "paper": "Fine-tuned Language Models for Text Classification",
     "link": "https://arxiv.org/abs/1801.06146",
     "date": "14.05.2018",
+    "materials": [],
+    "tags": []
+  },
+  {
+    "person": "Carolin Hecking-Veltman",
+    "email": null,
+    "paper": "Image-to-image translation for cross-domain disentanglement",
+    "link": "https://arxiv.org/abs/1805.09730",
+    "date": "11.06.2018",
     "materials": [],
     "tags": []
   }
