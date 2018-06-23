@@ -12,7 +12,7 @@ const messages = [
     "termination": "1.05.2018",
   },
   {
-    "info": "LMU AI Journal Club is taking a summer break! Our last meeting is taking place on 25.06.18 <br/> Good luck with your research and upcoming exams! <br/> We will reconvene at the begining of WS 2018/2019. Details will be announced here ahead of time.",
+    "info": "LMU AI Journal Club is taking a summer break! Our last meeting will take place on 25.06.18. Good luck with your research and upcoming exams! We will reconvene at the beginning of WS 2018/2019. Details will be announced here ahead of time.",
     "termination": "01.10.2018",
   },
 
