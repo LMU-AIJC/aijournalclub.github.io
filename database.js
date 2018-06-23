@@ -12,8 +12,8 @@ const messages = [
     "termination": "1.05.2018",
   },
   {
-    "info": "CANCELLED: No Reading group on 11.06.2018",
-    "termination": "12.06.2018",
+    "info": "The AI Journal Club is taking a summer break! Good luck with your research and upcoming exams! We will reconvene at the begining of WS 2018/2019. Details will be announced here ahead of time.",
+    "termination": "01.10.2018",
   },
 
 ]
@@ -187,4 +187,13 @@ const schedules = [
     "materials": [],
     "tags": []
   },
+  {
+    "person": "Carolin Hecking-Veltman",
+    "email": null,
+    "paper": "Image-to-image translation for cross-domain disentanglement",
+    "link": "https://arxiv.org/abs/1805.09730",
+    "date": "25.06.2018",
+    "materials": [],
+    "tags": []
+  }
 ]
